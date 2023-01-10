@@ -36,7 +36,7 @@
     <Filter Include="Texture">
       <UniqueIdentifier>{1ae37f1a-8048-4b2d-b017-b5748b728f0e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utility">
+    <Filter Include="TopLevel">
       <UniqueIdentifier>{b2125f08-0bfe-42dc-b987-4677cf79adf4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -92,11 +92,11 @@
     <ClCompile Include="..\..\Shared\Source\texture\TextureBuilder.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Shared\Source\Utility.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
     <ClCompile Include="glad.c">
       <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\top\Utility.cpp">
+      <Filter>TopLevel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,8 +145,14 @@
     <ClInclude Include="..\..\Shared\Source\texture\TextureBuilder.h">
       <Filter>Texture</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Shared\Source\Utility.h">
-      <Filter>Utility</Filter>
+    <ClInclude Include="..\..\Shared\Source\top\Utility.h">
+      <Filter>TopLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\top\Enums.h">
+      <Filter>TopLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\top\Includes.h">
+      <Filter>TopLevel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

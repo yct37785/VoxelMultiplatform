@@ -146,7 +146,7 @@
     <ClCompile Include="..\..\Shared\Source\shader\Shader.cpp" />
     <ClCompile Include="..\..\Shared\Source\shader\ShaderManager.cpp" />
     <ClCompile Include="..\..\Shared\Source\texture\TextureBuilder.cpp" />
-    <ClCompile Include="..\..\Shared\Source\Utility.cpp" />
+    <ClCompile Include="..\..\Shared\Source\top\Utility.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OSEngine.cpp" />
@@ -167,7 +167,9 @@
     <ClInclude Include="..\..\Shared\Source\shader\Shader.h" />
     <ClInclude Include="..\..\Shared\Source\shader\ShaderManager.h" />
     <ClInclude Include="..\..\Shared\Source\texture\TextureBuilder.h" />
-    <ClInclude Include="..\..\Shared\Source\Utility.h" />
+    <ClInclude Include="..\..\Shared\Source\top\Enums.h" />
+    <ClInclude Include="..\..\Shared\Source\top\Includes.h" />
+    <ClInclude Include="..\..\Shared\Source\top\Utility.h" />
     <ClInclude Include="OSEngine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
