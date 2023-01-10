@@ -2,17 +2,17 @@
 // texture loading
 #include <STB/stb_image.h>
 
-string fileToShaderString(string filename)
+std::string fileToShaderString(std::string filename)
 {
-	string output = "";
-	fstream inputFile(filename.c_str(), fstream::in);
+	std::string output = "";
+	std::fstream inputFile(filename.c_str(), std::fstream::in);
 	if (!inputFile.is_open())
 	{
 		LogWarn("Failed to open file!");
 		return "";
 	}
-	string aLine;
-	while (getline(inputFile, aLine))
+	std::string aLine;
+	while (std::getline(inputFile, aLine))
 	{
 		// read digits
 		output += aLine + "\n";
@@ -21,13 +21,13 @@ string fileToShaderString(string filename)
 	return output.c_str();
 }
 
-int loadShader(string sourceFile, string shaderType, unsigned int& shaderObject)
+int loadShader(std::string sourceFile, std::string shaderType, unsigned int& shaderObject)
 {
 #if defined(PLATFORM_WINDOWS) || defined(__EMSCRIPTEN__)
-	string shaderSource = fileToShaderString(sourceFile);
+	std::string shaderSource = fileToShaderString(sourceFile);
 	const char* shaderSourceCStr = shaderSource.c_str();
 #elif PLATFORM_ANDROID
-    vector<uint8_t> data;
+	std::vector<uint8_t> data;
     ndk_helper::JNIHelper::GetInstance()->ReadFile(sourceFile.c_str(), &data);
     const GLchar *source = (GLchar *)&data[0];
     int32_t iSize = data.size();
@@ -69,7 +69,7 @@ int loadShader(string sourceFile, string shaderType, unsigned int& shaderObject)
 	return 1;
 }
 
-int loadAndLinkShaders(string vertexShaderSource, string fragmentShaderSource, unsigned int& shaderProgram)
+int loadAndLinkShaders(std::string vertexShaderSource, std::string fragmentShaderSource, unsigned int& shaderProgram)
 {
 	unsigned int vertexShader, fragmentShader;
 
@@ -88,7 +88,7 @@ int loadAndLinkShaders(string vertexShaderSource, string fragmentShaderSource, u
 	if (!success)
 	{
 		glGetShaderInfoLog(shaderProgram, 512, NULL, infoLog);
-		LogWarn(string("shader program linkage failed: ") + infoLog);
+		LogWarn(std::string("shader program linkage failed: ") + infoLog);
 		return -1;
 	}
 
@@ -98,9 +98,9 @@ int loadAndLinkShaders(string vertexShaderSource, string fragmentShaderSource, u
 	return 1;
 }
 
-void generateTexture(string src, unsigned int& texture)
+void generateTexture(std::string src, unsigned int& texture)
 {
-	string ext = string(src).erase(0, src.find_last_of('.') + 1);
+	std::string ext = std::string(src).erase(0, src.find_last_of('.') + 1);
 
 	// generate texture
 	glGenTextures(1, &texture);
@@ -139,31 +139,31 @@ void generateTexture(string src, unsigned int& texture)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		}
-		LogInfo("Img w: " + to_string(width) + "  Img h: " + to_string(height) + "  Img ch: " + to_string(nrChannels));
+		LogInfo("Img w: " + std::to_string(width) + "  Img h: " + std::to_string(height) + "  Img ch: " + std::to_string(nrChannels));
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else
 	{
-		LogWarn(string("Failed to load texture image: ") + src);
+		LogWarn(std::string("Failed to load texture image: ") + src);
 	}
 
 	// free memory
 	stbi_image_free(data);
 }
 
-void LogInfo(string log)
+void LogInfo(std::string log)
 {
 #if defined(PLATFORM_WINDOWS) || defined(__EMSCRIPTEN__)
-	cout << "Info: " << log << endl;
+	std::cout << "Info: " << log << std::endl;
 #elif PLATFORM_ANDROID
     LOGI(log.c_str());
 #endif
 }
 
-void LogWarn(string log)
+void LogWarn(std::string log)
 {
 #if defined(PLATFORM_WINDOWS) || defined(__EMSCRIPTEN__)
-	cout << "WARN: " << log << endl;
+	std::cout << "WARN: " << log << std::endl;
 #elif PLATFORM_ANDROID
 	LOGW(log.c_str());
 #endif

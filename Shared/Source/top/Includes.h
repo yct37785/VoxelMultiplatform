@@ -42,18 +42,17 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-using namespace std;
 // defines
 #define PI 3.141592653589793
 static int windowsWidth = 1280;
 static int windowsHeight = 720;
 #ifdef PLATFORM_WINDOWS
-const static string assetsPath = "../../shared/Assets";
-const static string shaderspath = "../../shared/Shaders";
+const static std::string assetsPath = "../../shared/Assets";
+const static std::string shaderspath = "../../shared/Shaders";
 #elif PLATFORM_ANDROID
-const static string assetsPath = "Assets";
-const static string shaderspath = "Shaders";
+const static std::string assetsPath = "Assets";
+const static std::string shaderspath = "Shaders";
 #elif __EMSCRIPTEN__
-const static string assetsPath = "LearnOpenGL/Assets";
-const static string shaderspath = "LearnOpenGL/Shaders";
+const static std::string assetsPath = "LearnOpenGL/Assets";
+const static std::string shaderspath = "LearnOpenGL/Shaders";
 #endif

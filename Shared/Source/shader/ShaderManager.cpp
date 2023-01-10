@@ -33,7 +33,7 @@ void ShaderManager::useShader(SHADER_TYPES type)
 {
     if (!isUsed[type])
     {
-        for (map<SHADER_TYPES, bool>::iterator it = isUsed.begin(); it != isUsed.end(); ++it)
+        for (std::map<SHADER_TYPES, bool>::iterator it = isUsed.begin(); it != isUsed.end(); ++it)
         {
             (*it).second = false;
         }
@@ -42,25 +42,25 @@ void ShaderManager::useShader(SHADER_TYPES type)
     }
 }
 
-void ShaderManager::setUniform1f(SHADER_TYPES type, string label, float value)
+void ShaderManager::setUniform1f(SHADER_TYPES type, std::string label, float value)
 {
     useShader(type);
     shaders[type].setUniform1f(label, value);
 }
 
-void ShaderManager::setUniform1i(SHADER_TYPES type, string label, int value)
+void ShaderManager::setUniform1i(SHADER_TYPES type, std::string label, int value)
 {
     useShader(type);
     shaders[type].setUniform1i(label, value);
 }
 
-void ShaderManager::setUniform3fv(SHADER_TYPES type, string label, glm::vec3 value)
+void ShaderManager::setUniform3fv(SHADER_TYPES type, std::string label, glm::vec3 value)
 {
     useShader(type);
     shaders[type].setUniform3fv(label, value);
 }
 
-void ShaderManager::setUniformMatrix4fv(SHADER_TYPES type, string label, glm::mat4& value)
+void ShaderManager::setUniformMatrix4fv(SHADER_TYPES type, std::string label, glm::mat4& value)
 {
     useShader(type);
     shaders[type].setUniformMatrix4fv(label, value);

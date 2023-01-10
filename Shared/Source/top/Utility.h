@@ -3,15 +3,15 @@
 #include "Enums.h"
 
 // general
-string fileToShaderString(string filename);
+std::string fileToShaderString(std::string filename);
 
 // shaders
-int loadShader(string sourceFile, string shaderType, unsigned int& shaderObject);
-int loadAndLinkShaders(string vertexShaderSource, string fragmentShaderSource, unsigned int& shaderProgram);
+int loadShader(std::string sourceFile, std::string shaderType, unsigned int& shaderObject);
+int loadAndLinkShaders(std::string vertexShaderSource, std::string fragmentShaderSource, unsigned int& shaderProgram);
 
 // texture
-void generateTexture(string src, unsigned int& texture);
+void generateTexture(std::string src, unsigned int& texture);
 
 // logging
-void LogInfo(string log);
-void LogWarn(string log);
+void LogInfo(std::string log);
+void LogWarn(std::string log);

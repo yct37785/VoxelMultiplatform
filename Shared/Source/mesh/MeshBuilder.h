@@ -21,7 +21,7 @@ class MeshBuilder
 	// OBJs
 
 	// binding
-	Mesh* bindInterleavedBuffers(vector<float>& vertices, vector<int>& indices);
+	Mesh* bindInterleavedBuffers(std::vector<float>& vertices, std::vector<int>& indices);
 
 public:
 	~MeshBuilder();

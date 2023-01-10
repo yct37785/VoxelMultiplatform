@@ -56,7 +56,7 @@ Mesh* MeshBuilder::initCube()
             |    |
             face 5
     */
-    vector<float> vertices {
+    std::vector<float> vertices {
         // position	         // normal        // tex coord
         // face 1
          0.5f,  0.5f,  0.5f,  0.f,  0.f,  1.f,  1.0f, 1.0f,	// 0
@@ -91,7 +91,7 @@ Mesh* MeshBuilder::initCube()
     };
 
     // always draw our vertices in a CW direction
-    vector<int> indices(6 * 6);
+    std::vector<int> indices(6 * 6);
     for (int i = 0, j = 0; i < 6 * 6; i += 6, j += 4)
     {
         // triangle 1
@@ -111,7 +111,7 @@ Mesh* MeshBuilder::initSphere()
 {
     unsigned int VBO, EBO, VAO;
 
-	vector<float> vertices; // x, y, z, nx, ny, nz, s, t
+    std::vector<float> vertices; // x, y, z, nx, ny, nz, s, t
 	float radius = 0.5f;
 	int sectorCount = 36;
 	int stackCount = 36;
@@ -164,8 +164,8 @@ Mesh* MeshBuilder::initSphere()
     // |  / |
     // | /  |
     // k2--k2+1
-	vector<int> indices;
-	vector<int> lineIndices;
+    std::vector<int> indices;
+    std::vector<int> lineIndices;
 	int k1, k2;
 	for (int i = 0; i < stackCount; ++i)
 	{
@@ -199,13 +199,13 @@ Mesh* MeshBuilder::initSphere()
 Mesh* MeshBuilder::initLine()
 {
     // we can disregard the normals and texcoordsS
-    vector<float> vertices {
+    std::vector<float> vertices {
         -0.5f, 0.0f, 0.0f, 0.f, 0.f, 1.f, 1.0f, 1.0f,
         0.5f, 0.0f, 0.0f, 0.f, 0.f, 1.f, 1.0f, 0.0f
     };
 
     // always draw our vertices in a CW direction
-    vector<int> indices { 0, 1 };
+    std::vector<int> indices { 0, 1 };
 
     return bindInterleavedBuffers(vertices, indices);
 }
@@ -213,7 +213,7 @@ Mesh* MeshBuilder::initLine()
 Mesh* MeshBuilder::initQuad(int scale)
 {
     float unit = (float)scale;
-    vector<float> vertices {
+    std::vector<float> vertices {
          unit * 0.5f,  0.f,  unit * 0.5f,  0.f,  1.f,  0.f,  unit, unit,
          unit * 0.5f,  0.f, -unit * 0.5f,  0.f,  1.f,  0.f,  unit, 0.0f,
         -unit * 0.5f,  0.f, -unit * 0.5f,  0.f,  1.f,  0.f,  0.0f, 0.0f,
@@ -221,14 +221,14 @@ Mesh* MeshBuilder::initQuad(int scale)
     };
 
     // always draw our vertices in a CW direction
-    vector<int> indices {
+    std::vector<int> indices {
         0, 3, 1, 3, 2, 1
     };
 
     return bindInterleavedBuffers(vertices, indices);
 }
 
-Mesh* MeshBuilder::bindInterleavedBuffers(vector<float>& vertices, vector<int>& indices)
+Mesh* MeshBuilder::bindInterleavedBuffers(std::vector<float>& vertices, std::vector<int>& indices)
 {
     unsigned int VBO, EBO, VAO;
 
