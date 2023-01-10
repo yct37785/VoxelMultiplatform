@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{75f86a70-c7de-4791-aced-78476703c45b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{19a9f9cb-0ac3-4b1a-bfdc-7e2e0423bbc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{84fdee21-5cf9-4c17-8261-baefdec638c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Material">
+      <UniqueIdentifier>{bb3afe6a-3f25-4acd-bbb2-019ea1027652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{9324b4a9-3657-4311-9d94-ecad4d97b807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{7b9fe89c-336b-4f14-a91b-abafc8837863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{892138cb-80f6-4c2a-8bbd-e0ac2b65e39c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{3673c7be-a9cf-46fe-87bc-a8f85305907d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{1ae37f1a-8048-4b2d-b017-b5748b728f0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{b2125f08-0bfe-42dc-b987-4677cf79adf4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OSEngine.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\camera\Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\engine\Engine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\material\Material.cpp">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\material\MaterialBuilder.cpp">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\material\MaterialColor.cpp">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\material\MaterialLightMap.cpp">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\mesh\Mesh.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\mesh\MeshBuilder.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\object\GameObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\scenes\Scene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\scenes\SceneLightMap.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\shader\Shader.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\shader\ShaderManager.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\texture\TextureBuilder.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\Utility.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Platform</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OSEngine.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\camera\Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\engine\Engine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\material\Material.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\material\MaterialBuilder.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\material\MaterialColor.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\material\MaterialLightMap.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\mesh\Mesh.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\mesh\MeshBuilder.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\object\GameObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\scenes\Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\scenes\SceneLightMap.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\shader\Shader.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\shader\ShaderManager.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\texture\TextureBuilder.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\Utility.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
