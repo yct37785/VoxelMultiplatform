@@ -1,4 +1,5 @@
 package com.voxel;
+
 import androidx.annotation.NonNull;
 
 import com.facebook.react.ReactPackage;
@@ -8,13 +9,10 @@ import com.facebook.react.uimanager.ViewManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-/*
-consolidate all our custom native modules to pass to ReactNativeHost's getPackages()
- */
-public class MyAppPackage implements ReactPackage {
+public class MyPackage implements ReactPackage {
+
     @NonNull
     @Override
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
@@ -24,12 +22,9 @@ public class MyAppPackage implements ReactPackage {
         return modules;
     }
 
-    @NonNull
     @Override
-    public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
-        // managers are singletons so no duplicate issues
-        // ViewManager[] sourceArray = { new ReactCanvas(reactContext) };
-        ViewManager[] sourceArray = { };
+    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+        ViewManager[] sourceArray = { new MyViewManager(reactContext) };
         return Arrays.asList(sourceArray);
     }
 }
