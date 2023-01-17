@@ -53,6 +53,6 @@ const static std::string shaderspath = "../../shared/Shaders";
 const static std::string assetsPath = "Assets";
 const static std::string shaderspath = "Shaders";
 #elif __EMSCRIPTEN__
-const static std::string assetsPath = "LearnOpenGL/Assets";
-const static std::string shaderspath = "LearnOpenGL/Shaders";
+const static std::string assetsPath = "assets/Assets";
+const static std::string shaderspath = "assets/Shaders";
 #endif

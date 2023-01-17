@@ -22,7 +22,7 @@ add_library( # Sets the name of the library.
              # Sets the library as a shared library.
              STATIC
 
-			 libs/Android_dep/Android_Dependencies.cpp
+			 includes/Android_dep/Android_Dependencies.cpp
 			 )
 			 
 target_include_directories(dependency-lib PRIVATE
@@ -30,17 +30,17 @@ target_include_directories(dependency-lib PRIVATE
                            ${ANDROID_NDK}/sources/android/native_app_glue)
 						   
 target_link_libraries( # Specifies the target library.
-                       dependency-lib			 
+                        dependency-lib			 
 						app-glue
 						cpufeatures
 						android)
 			
 #add RUNTIME dependency files here for subsequent libs/cpp
-SET(CMAKE_CXX_FLAGS "-include ../../../../libs/Android_dep/Android_Dependencies.h")
-SET(CMAKE_C_FLAGS "-include ../../../../libs/Android_dep/Android_Dependencies.h")
+SET(CMAKE_CXX_FLAGS "-include ../../../../includes/Android_dep/Android_Dependencies.h")
+SET(CMAKE_C_FLAGS "-include ../../../../includes/Android_dep/Android_Dependencies.h")
 			
 # build the ndk-helper library--------------------------------------------------------------------//
-set(ndk_helper_dir libs/ndk_helper)	#start location is location of CMakeLists.txt
+set(ndk_helper_dir includes/ndk_helper)	#start location is location of CMakeLists.txt
 add_subdirectory(${ndk_helper_dir} ndk_helper)
 
 # build the native library--------------------------------------------------------------------//			 
@@ -114,7 +114,7 @@ target_include_directories(voxel-lib PRIVATE
 						   ${shared_src_dir}
 						   ${shared_includes_dir}
 						   ${shared_includes_dir}/glm
-						   libs
+						   includes
 						   ${ndk_helper_dir}
 						   )
 
