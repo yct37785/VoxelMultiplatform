@@ -127,13 +127,8 @@ void OSEngine::processInput(GLFWwindow* window)
 		inputList[INPUT_ENABLE_WIREFRAME] = true;
 	} if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
 		inputList[INPUT_DISABLE_WIREFRAME] = true;
-	} if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+	} if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
 		inputList[INPUT_QUIT] = true;
-	}
-
-	// process inputs
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
 		glfwSetWindowShouldClose(window, true);
 	}
 }

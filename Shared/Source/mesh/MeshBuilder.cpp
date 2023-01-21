@@ -34,13 +34,13 @@ void MeshBuilder::Init()
 
 void MeshBuilder::initPrimitives()
 {
-    meshes[MESH_SPHERE] = initSphere();
-    meshes[MESH_CUBE] = initCube();
-    meshes[MESH_LINE] = initLine();
-    meshes[MESH_QUAD_INFINITE_FLOOR] = initQuad(100);
+    meshes[MESH_SPHERE] = genSphere();
+    meshes[MESH_CUBE] = genCube();
+    meshes[MESH_LINE] = genLine();
+    meshes[MESH_QUAD_INFINITE_FLOOR] = genQuad(100);
 }
 
-Mesh* MeshBuilder::initCube()
+Mesh* MeshBuilder::genCube()
 {
     // cube
     /*
@@ -104,10 +104,10 @@ Mesh* MeshBuilder::initCube()
         indices[i + 5] = j + 3;
     };
 
-    return bindInterleavedBuffers(vertices, indices);
+    return new Mesh(vertices, indices);
 }
 
-Mesh* MeshBuilder::initSphere()
+Mesh* MeshBuilder::genSphere()
 {
     unsigned int VBO, EBO, VAO;
 
@@ -193,10 +193,10 @@ Mesh* MeshBuilder::initSphere()
 		}
 	}
 
-    return bindInterleavedBuffers(vertices, indices);
+    return new Mesh(vertices, indices);
 }
 
-Mesh* MeshBuilder::initLine()
+Mesh* MeshBuilder::genLine()
 {
     // we can disregard the normals and texcoordsS
     std::vector<float> vertices {
@@ -207,10 +207,10 @@ Mesh* MeshBuilder::initLine()
     // always draw our vertices in a CW direction
     std::vector<int> indices { 0, 1 };
 
-    return bindInterleavedBuffers(vertices, indices);
+    return new Mesh(vertices, indices);
 }
 
-Mesh* MeshBuilder::initQuad(int scale)
+Mesh* MeshBuilder::genQuad(int scale)
 {
     float unit = (float)scale;
     std::vector<float> vertices {
@@ -225,45 +225,7 @@ Mesh* MeshBuilder::initQuad(int scale)
         0, 3, 1, 3, 2, 1
     };
 
-    return bindInterleavedBuffers(vertices, indices);
-}
-
-Mesh* MeshBuilder::bindInterleavedBuffers(std::vector<float>& vertices, std::vector<int>& indices)
-{
-    unsigned int VBO, EBO, VAO;
-
-    // VAO (stores all attributes of the following GL_ARRAY_BUFFER)
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
-
-    // EBO
-    glGenBuffers(1, &EBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(int), indices.data(), GL_STATIC_DRAW);
-
-    // VBO
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);	// bind the above created buffer object to this target
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(int), vertices.data(), GL_STATIC_DRAW);	// copy user defined data to the bounded buffer
-
-    // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    // normal attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-
-    // tex attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
-
-    // unbind
-    glBindVertexArray(0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    return new Mesh(VBO, EBO, VAO, indices.size());
+    return new Mesh(vertices, indices);
 }
 
 const Mesh* MeshBuilder::getMesh(MESH_TYPES type)

@@ -10,18 +10,13 @@ class MeshBuilder
 	MeshBuilder();
 
 	// generators
-	Mesh* initCube();
-	Mesh* initSphere();
-	Mesh* initLine();
-	Mesh* initQuad(int scale);
+	Mesh* genCube();
+	Mesh* genSphere();
+	Mesh* genLine();
+	Mesh* genQuad(int scale);
 
 	// primitives
 	void initPrimitives();
-
-	// OBJs
-
-	// binding
-	Mesh* bindInterleavedBuffers(std::vector<float>& vertices, std::vector<int>& indices);
 
 public:
 	~MeshBuilder();

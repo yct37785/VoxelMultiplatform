@@ -9,11 +9,11 @@
 class Mesh
 {
 	unsigned int VBO, EBO, VAO;
-	int totalVertices;
+	std::vector<float> vertices;
+	std::vector<int> indices;
 
 public:
-	Mesh();
-	Mesh(unsigned int VBO, unsigned int EBO, unsigned int VAO, int totalVertices);
+	Mesh(const std::vector<float>& vertices, const std::vector<int>& indices);
 	~Mesh();
 
 	unsigned int getVBO() const;
