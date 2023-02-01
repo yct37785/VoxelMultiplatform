@@ -16,6 +16,8 @@
 #include <map>
 // Core C++, OpenGL, texture and any other platform specific libs
 #ifdef PLATFORM_WINDOWS
+// multi-threading
+#include <thread>
 // memory leak detection
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>

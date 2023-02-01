@@ -170,9 +170,9 @@
     <ClInclude Include="..\..\Shared\Source\top\Enums.h" />
     <ClInclude Include="..\..\Shared\Source\top\Includes.h" />
     <ClInclude Include="..\..\Shared\Source\top\Utility.h" />
+    <ClInclude Include="ctpl_stl.h" />
     <ClInclude Include="OSEngine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

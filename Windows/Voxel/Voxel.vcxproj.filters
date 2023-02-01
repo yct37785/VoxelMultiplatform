@@ -154,5 +154,8 @@
     <ClInclude Include="..\..\Shared\Source\top\Includes.h">
       <Filter>TopLevel</Filter>
     </ClInclude>
+    <ClInclude Include="ctpl_stl.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
