@@ -16,8 +16,6 @@
 #include <map>
 // Core C++, OpenGL, texture and any other platform specific libs
 #ifdef PLATFORM_WINDOWS
-// multi-threading
-#include <thread>
 // memory leak detection
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
@@ -44,6 +42,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+// multi-threading
+#include "../thread/ThreadPoolBase.h"
 // defines
 #define PI 3.141592653589793
 static int windowsWidth = 1280;

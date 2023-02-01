@@ -39,6 +39,9 @@
     <Filter Include="TopLevel">
       <UniqueIdentifier>{b2125f08-0bfe-42dc-b987-4677cf79adf4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{f6f79cd9-0c0a-4962-b159-f9d06f1d354a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OSEngine.cpp">
@@ -98,6 +101,9 @@
     <ClCompile Include="..\..\Shared\Source\top\Utility.cpp">
       <Filter>TopLevel</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Shared\Source\thread\ThreadPoolBase.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OSEngine.h">
@@ -156,6 +162,9 @@
     </ClInclude>
     <ClInclude Include="ctpl_stl.h">
       <Filter>Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Shared\Source\thread\ThreadPoolBase.h">
+      <Filter>Thread</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

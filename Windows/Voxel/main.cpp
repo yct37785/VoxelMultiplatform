@@ -8,20 +8,15 @@ void first(int id, int jobid, const int delayms) {
 
 int main()
 {
-	const int TOTAL_THREADS = std::thread::hardware_concurrency();
-	std::cout << "TOTAL_THREADS: " << TOTAL_THREADS << std::endl;
-	const int TOTAL_JOBS = 4;
-	ctpl::thread_pool p(TOTAL_THREADS);
-	std::vector<std::future<void>> results(4);
+	int TOTAL_JOBS = 4;
+	p_ThreadPool->Init();
 	for (int i = 0; i < 8; ++i) {
 		// add jobs
 		for (int j = 0; j < TOTAL_JOBS; ++j) {
-			results[j] = p.push(first, j + 1, (j + 1) * 1000);
+			p_ThreadPool->RunJob(first, j + 1, (j + 1) * 1000);
 		}
-		for (int j = 0; j < TOTAL_JOBS; ++j) {
-			results[j].get();
-		}
-		std::cout << "All jobs completed --" << std::endl;
+		// wait
+		p_ThreadPool->WaitAll();
 	}
 
 	//OSEngine::instance()->Init();
