@@ -1,5 +1,4 @@
 #include "OSEngine.h"
-#include "ctpl_stl.h"
 
 void first(int id, int jobid, const int delayms) {
 	std::this_thread::sleep_for(std::chrono::milliseconds(delayms));
@@ -8,15 +7,16 @@ void first(int id, int jobid, const int delayms) {
 
 int main()
 {
-	int TOTAL_JOBS = 4;
 	p_ThreadPool->Init();
 	for (int i = 0; i < 8; ++i) {
 		// add jobs
-		for (int j = 0; j < TOTAL_JOBS; ++j) {
-			p_ThreadPool->RunJob(first, j + 1, (j + 1) * 1000);
-		}
+		p_ThreadPool->RunJob(0, first, 1, 1 * 1000);
+		p_ThreadPool->RunJob(0, first, 2, 2 * 1000);
+		p_ThreadPool->RunJob(1, first, 3, 3 * 1000);
+		p_ThreadPool->RunJob(1, first, 4, 4 * 1000);
 		// wait
-		p_ThreadPool->WaitAll();
+		p_ThreadPool->WaitBatch(0);
+		p_ThreadPool->WaitBatch(1);
 	}
 
 	//OSEngine::instance()->Init();

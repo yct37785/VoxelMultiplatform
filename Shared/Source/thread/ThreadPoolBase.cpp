@@ -18,13 +18,15 @@ void ThreadPoolBase::Init()
 #endif
 }
 
-void ThreadPoolBase::WaitAll()
+void ThreadPoolBase::WaitBatch(int batchId)
 {
 #ifdef PLATFORM_WINDOWS
-	for (int i = 0; i < futures.size(); ++i) {
-		futures[i].get();
+	if (batches.find(batchId) == batches.end())
+		return;
+	for (int i = 0; i < batches[batchId].size(); ++i) {
+		batches[batchId][i].get();
 	}
-	futures.clear();
-	std::cout << "All jobs completed --" << std::endl;
+	batches[batchId].clear();
+	std::cout << "Batch id " << batchId << " completed--" << std::endl;
 #endif
 }

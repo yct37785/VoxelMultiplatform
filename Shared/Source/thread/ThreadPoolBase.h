@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdarg>
 #include <iostream>
+#include <unordered_map>
 #ifdef PLATFORM_WINDOWS
 #include "../../../Windows/Voxel/ctpl_stl.h"
 #endif
@@ -16,21 +17,21 @@ class ThreadPoolBase
 	// platform specific multi-thread helpers
 #ifdef PLATFORM_WINDOWS
 	std::unique_ptr<ctpl::thread_pool> p;
-	std::vector<std::future<void>> futures;
+	std::unordered_map<int, std::vector<std::future<void>>> batches;
 #endif
 
 public:
 	static std::unique_ptr<ThreadPoolBase>& getInstance();
 
 	void Init();
-	void WaitAll();
+	void WaitBatch(int batchId);
 
 	// template functions
 	template<typename F, typename... Rest>
-	void RunJob(F&& f, Rest&&... rest)
+	void RunJob(int batchId, F&& f, Rest&&... rest)
 	{
 #ifdef PLATFORM_WINDOWS
-		futures.push_back(p->push(f, rest...));
+		batches[batchId].push_back(p->push(f, rest...));
 #endif
 	}
 };
