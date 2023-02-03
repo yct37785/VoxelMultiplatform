@@ -11,11 +11,11 @@ emscripten_lock_t lock = EMSCRIPTEN_LOCK_T_STATIC_INITIALIZER;
 
 void run_in_worker()
 {
-  while (!emscripten_lock_try_acquire(&lock)) {}
+  emscripten_lock_waitinf_acquire(&lock);
   printf("Hello from wasm worker %d!\n", emscripten_wasm_worker_self_id());
   emscripten_lock_release(&lock);
   emscripten_wasm_worker_sleep(/*nsecs=*/1500*1000000);
-  while (!emscripten_lock_try_acquire(&lock)) {}
+  emscripten_lock_waitinf_acquire(&lock);
   printf("Bye from wasm worker %d!\n", emscripten_wasm_worker_self_id());
   emscripten_lock_release(&lock);
 }
