@@ -24,9 +24,9 @@ emscripten_lock_t console_log_lock = EMSCRIPTEN_LOCK_T_STATIC_INITIALIZER;
 void console_log(std::string str)
 {
 	// lock and unlock shared resource
-	emscripten_lock_waitinf_acquire(&console_log_lock);
+	//emscripten_lock_waitinf_acquire(&console_log_lock);
 	printf("%s\n", str.c_str());
-	emscripten_lock_release(&console_log_lock);
+	//emscripten_lock_release(&console_log_lock);
 }
 
 void run_in_worker()
@@ -37,12 +37,14 @@ void run_in_worker()
 	// acquire thread run semaphore once main thread has given this thread a go signal
 	emscripten_semaphore_waitinf_acquire(&threadsRunning, 1);
 	
-	console_log("Worker " + std::to_string(emscripten_wasm_worker_self_id()) + ": hello!");
+	//console_log("Worker " + std::to_string(emscripten_wasm_worker_self_id()) + ": hello!");
   
-	// computationally expensive task
+	// computationally expensive task (locked)
+	emscripten_lock_waitinf_acquire(&console_log_lock);
 	emscripten_wasm_worker_sleep(/*nsecs=*/1500*1000000);
+	emscripten_lock_release(&console_log_lock);
 	
-	console_log("Worker " + std::to_string(emscripten_wasm_worker_self_id()) + ": byee!");
+	//console_log("Worker " + std::to_string(emscripten_wasm_worker_self_id()) + ": byee!");
 	
 	// increment semaphore to signal that this thread has finished
     emscripten_semaphore_release(&threadsCompleted, 1);
