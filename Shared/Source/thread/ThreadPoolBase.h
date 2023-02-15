@@ -2,9 +2,24 @@
 #include <cstdarg>
 #include <iostream>
 #include <unordered_map>
+#include <stdio.h>
+#include <stdlib.h>
 #ifdef PLATFORM_WINDOWS
 #include "../../../Windows/Voxel/ctpl_stl.h"
+#elif __EMSCRIPTEN__
+#include <emscripten.h>
+#include <emscripten/wasm_worker.h>
+#include <emscripten/threading.h>
 #endif
+
+/**
+* Emecripten batch class
+*/
+//class EmscriptenBatch
+//{
+//	std::vector<emscripten_wasm_worker_t>;
+//};
+
 
 /******************************************************************************
 * Platform unified API for multi-threading
